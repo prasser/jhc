@@ -67,7 +67,7 @@ JHCConfiguration config = new JHCConfiguration("x-label", "y-label",
 int[][] array = {{0,1,0}, {1,0,1}, {0,1,0}};
 
 // Create data object
-JHCData data = JHCData.create(array, xScale, yScale);
+JHCData data = JHCData.create(array, Orientation.ROW, xScale, yScale);
 
 // Create JHC widget
 JHC jhc = new JHC(shell, SWT.NONE);
