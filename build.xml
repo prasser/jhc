@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JHC" default="release" basedir=".">
+
+    <description>Builds, tests, and runs the project.</description>
+
+    <!-- defines the version number -->
+    <property name="version" value="1.0.0" />
+
+    <target name="release" depends="jars">
+    </target>
+
+    <target name="clean">
+        <delete dir="build/swt" failonerror="true" />
+        <delete dir="build/awt" failonerror="true" />
+        <delete dir="build/swing" failonerror="true" />
+        <delete dir="jars" failonerror="true" />
+    </target>
+
+    <target name="prepare" depends="clean">
+        <mkdir dir="build" />
+        <mkdir dir="build/swt" />
+        <mkdir dir="build/awt" />
+        <mkdir dir="build/swing" />
+        <mkdir dir="jars" />
+    </target>
+
+    <target name="clean-javadoc">
+        <delete includeEmptyDirs="true" failonerror="true">
+            <fileset dir="doc/swt" includes="**/*" defaultexcludes="yes">
+                <exclude name="doc/swt/.svn" />
+            </fileset>
+        </delete>
+        <delete includeEmptyDirs="true" failonerror="true">
+            <fileset dir="doc/awt" includes="**/*" defaultexcludes="yes">
+                <exclude name="doc/awt/.svn" />
+            </fileset>
+        </delete>
+        <delete includeEmptyDirs="true" failonerror="true">
+            <fileset dir="doc/swing" includes="**/*" defaultexcludes="yes">
+                <exclude name="doc/swing/.svn" />
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="javadoc-swt" depends="clean-javadoc">
+        <javadoc packagenames="de.linearbits.jhc.*" 
+    	    sourcepath="src/main;src/swt"
+        	classpath="lib/swt-4.2.1-gtk-linux-x86_64.jar"
+        	destdir="doc/swt" 
+        	source="1.7" 
+        	notree="false" 
+        	nonavbar="false" 
+        	noindex="false" 
+        	splitindex="true" 
+        	access="public" 
+        	use="true" 
+        	author="Fabian Prasser" 
+        	version="${version}" 
+        	windowtitle="JHC API Documentation" 
+        	private="false" 
+        	failonerror="true">
+        </javadoc>
+    </target>
+
+
+    <target name="javadoc-awt" depends="clean-javadoc">
+        <javadoc packagenames="de.linearbits.jhc.*" 
+    	    sourcepath="src/main;src/awt;src/java2d"
+        	destdir="doc/awt" 
+        	source="1.7" 
+        	notree="false" 
+        	nonavbar="false" 
+        	noindex="false" 
+        	splitindex="true" 
+        	access="public" 
+        	use="true" 
+        	author="Fabian Prasser" 
+        	version="${version}" 
+        	windowtitle="JHC API Documentation" 
+        	private="false" 
+        	failonerror="true">
+        </javadoc>
+    </target>
+
+
+
+    <target name="javadoc-swing" depends="clean-javadoc">
+        <javadoc packagenames="de.linearbits.jhc.*" 
+    	    sourcepath="src/main;src/swing;src/java2d"
+        	destdir="doc/swing" 
+        	source="1.7" 
+        	notree="false" 
+        	nonavbar="false" 
+        	noindex="false" 
+        	splitindex="true" 
+        	access="public" 
+        	use="true" 
+        	author="Fabian Prasser" 
+        	version="${version}" 
+        	windowtitle="JHC API Documentation" 
+        	private="false" 
+        	failonerror="true">
+        </javadoc>
+    </target>
+
+    <target name="javadoc" depends="javadoc-swt,javadoc-awt,javadoc-swing">
+    </target>
+
+    <target name="compile" depends="prepare" description="compile the source ">
+        <javac srcdir="src/main:src/swt" destdir="build/swt" source="1.7">
+            <classpath>
+                <path path="src/main" />
+                <path path="src/swt" />
+            </classpath>
+
+            <classpath>
+            	 <fileset dir="lib">
+            	        <or>
+            	            <filename name="**/swt-4.2.1-gtk-linux-x86_64.jar" />
+        				</or>
+            	 </fileset>
+            </classpath>
+        </javac>
+        <javac srcdir="src/main:src/java2d:src/awt" destdir="build/awt" source="1.7">
+            <classpath>
+                <path path="src/main" />
+                <path path="src/java2d" />
+                <path path="src/awt" />
+            </classpath>
+        </javac>
+        <javac srcdir="src/main:src/java2d:src/swing" destdir="build/swing" source="1.7">
+            <classpath>
+                <path path="src/main" />
+                <path path="src/java2d" />
+                <path path="src/swing" />
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="jars" depends="compile, javadoc">
+        <jar destfile="jars/libjhc-${version}-swt-doc.jar">
+            <fileset dir="doc/swt" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-awt-doc.jar">
+            <fileset dir="doc/awt" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-swing-doc.jar">
+            <fileset dir="doc/swing" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-src.jar">
+            <fileset dir="src/main" defaultexcludes="no" />
+            <fileset dir="src/java2d" defaultexcludes="no" />
+            <fileset dir="src/awt" defaultexcludes="no" />
+            <fileset dir="src/swing" defaultexcludes="no" />
+            <fileset dir="src/swt" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-swt.jar">
+            <fileset dir="build/swt" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-awt.jar">
+            <fileset dir="build/awt" defaultexcludes="no" />
+        </jar>
+        <jar destfile="jars/libjhc-${version}-swing.jar">
+            <fileset dir="build/swing" defaultexcludes="no" />
+        </jar>
+
+        <delete dir="build/swt" failonerror="true" />
+        <delete dir="build/awt" failonerror="true" />
+        <delete dir="build/swing" failonerror="true" />
+        <delete dir="build" failonerror="true" />
+    </target>
+</project>
