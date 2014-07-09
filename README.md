@@ -59,12 +59,12 @@ JHCScale<String> xScale = new JHCScale.String(new String[] { "X1", "X2", "X3" })
 JHCScale<String> yScale = new JHCScale.String(new String[] { "Y1", "Y2", "Y3" });
 
 // Configure
-JHCLayout layout = new JHCLayout(true, 20, true, 20);
+JHCLayout layout = new JHCLayout(false, 20, true, 20);
 JHCConfiguration config = new JHCConfiguration("x-label", "y-label", 
                                                JHCGradient.GRADIENT_HEAT, layout);
 
 // Create array
-int[][] array = {{0,1,0}, {1,0,1}, {0,1,0}};
+int[][] array = {{0,1,0}, {1,2,1}, {0,1,0}};
 
 // Create data object
 JHCData data = JHCData.create(array, Orientation.ROW, xScale, yScale);
@@ -73,6 +73,10 @@ JHCData data = JHCData.create(array, Orientation.ROW, xScale, yScale);
 JHC jhc = new JHC(shell, SWT.NONE);
 jhc.setData(data, config);
 ```
+
+The result looks like this:
+
+[![Screenshot-2](https://raw.github.com/prasser/jhc/master/img/screenshot2.png)](https://raw.github.com/prasser/jhc/master/img/screenshot2.png)
 
 Download
 ------
