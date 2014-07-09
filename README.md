@@ -77,13 +77,17 @@ Download
 ------
 A binary version for AWT is available for download [here](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-awt.jar)
 ([Javadoc](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-awt-doc.jar)).
+
 A binary version for Swing is available for download [here](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-swing.jar)
 ([Javadoc](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-swing-doc.jar)).
+
 A binary version for SWT is available for download [here](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-swt.jar)
 ([Javadoc](https://rawgithub.com/prasser/jhc/master/jars/jhc-1.0.0-swt-doc.jar)).
 
 Documentation
 ------
 Online Javadoc for AWT can be found [here](https://rawgithub.com/prasser/jhc/master/doc/awt/index.html).
+
 Online Javadoc for Swing can be found [here](https://rawgithub.com/prasser/jhc/master/doc/swing/index.html).
+
 Online Javadoc for SWT can be found [here](https://rawgithub.com/prasser/jhc/master/doc/swt/index.html). 
