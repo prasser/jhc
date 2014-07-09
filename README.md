@@ -60,7 +60,8 @@ JHCScale<String> yScale = new JHCScale.String(new String[] { "Y1", "Y2", "Y3" })
 
 // Configure
 JHCLayout layout = new JHCLayout(true, 20, true, 20);
-JHCConfiguration config = new JHCConfiguration("x-label", "y-label", JHCGradient.GRADIENT_HEAT, layout);
+JHCConfiguration config = new JHCConfiguration("x-label", "y-label", 
+                                               JHCGradient.GRADIENT_HEAT, layout);
 
 // Create array
 int[][] array = {{0,1,0}, {1,0,1}, {0,1,0}};
