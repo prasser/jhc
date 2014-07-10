@@ -55,7 +55,10 @@ class CanvasSwing extends JComponent implements Canvas<Image, Font, Color> {
     private final Painter<Image, Font, Color> painter          = new Painter<Image, Font, Color>(this);
 
     /** The text extents. */
-    private Dimension                      textExtents      = null;
+    private Dimension                         textExtents      = null;
+
+    /** The tooltip*/
+    private ToolTip                           tooltip          = new ToolTip();
 
     /**
      * Creates a new instance
@@ -83,7 +86,7 @@ class CanvasSwing extends JComponent implements Canvas<Image, Font, Color> {
             @Override
             public void mouseMoved(java.awt.event.MouseEvent e) {
                 if (heatmap != null && painter != null) {
-                    String text = ToolTip.getToolTip(heatmap, painter, e.getX(), e.getY(), true);
+                    String text = tooltip.getToolTip(heatmap, painter, e.getX(), e.getY(), true);
                     CanvasSwing.this.setToolTipText(text);
                 } else {
                     CanvasSwing.this.setToolTipText(null);

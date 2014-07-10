@@ -33,7 +33,7 @@ class ToolTip {
      * @param y the y
      * @return the tool tip
      */
-    public static String getToolTip(RenderedHeatmap<?> heatmap, Painter<?, ?, ?> painter, int sx, int sy, boolean html) {
+    public String getToolTip(RenderedHeatmap<?> heatmap, Painter<?, ?, ?> painter, int sx, int sy, boolean html) {
         Rectangle heatmapPosition = painter.getHeatmapPosition();
         if (heatmapPosition != null) {
             int x = sx - heatmapPosition.x;

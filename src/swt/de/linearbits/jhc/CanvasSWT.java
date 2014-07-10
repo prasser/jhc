@@ -50,7 +50,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
     private Color                             gray;
 
     /** The heatmap. */
-    private RenderedHeatmap<Image>                    heatmap     = null;
+    private RenderedHeatmap<Image>            heatmap     = null;
 
     /** The listener. */
     private CanvasListener                    listener    = null;
@@ -63,6 +63,9 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
 
     /** The text extents. */
     private Dimension                         textExtents = null;
+
+    /** The tool tip*/
+    private ToolTip                           tooltip     = new ToolTip();
 
     /**
      * Creates a new instance
@@ -128,7 +131,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
             @Override
             public void mouseMove(MouseEvent arg0) {
                 if (heatmap != null && painter != null) {
-                    String text = ToolTip.getToolTip(heatmap, painter, arg0.x, arg0.y, false);
+                    String text = tooltip.getToolTip(heatmap, painter, arg0.x, arg0.y, false);
                     CanvasSWT.this.setToolTipText(text);
                 } else {
                     CanvasSWT.this.setToolTipText(null);
