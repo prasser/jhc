@@ -5,8 +5,8 @@ This project implements a widget/control that displays [heat maps](https://en.wi
 JHC is available for all major Java toolkits: 
 
 * Standard Widget Toolkit (SWT)
-* Swing
 * Abstract Window Toolkit (AWT)
+* Swing
 
 For rendering, the native interfaces of the toolkits are used (avoiding the infamous SWT_AWT bridge). The main feature of JHC is that it is able 
 to display very large heat maps efficiently.
