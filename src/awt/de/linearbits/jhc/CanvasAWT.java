@@ -95,7 +95,7 @@ class CanvasAWT extends Component implements Canvas<Image, Font, Color> {
             @Override
             public void mouseMoved(java.awt.event.MouseEvent e) {
                 if (heatmap != null && painter != null) {
-                    String text = tooltipmanager.getToolTip(heatmap, painter, e.getX(), e.getY(), false);
+                    String text = tooltipmanager.getToolTip(heatmap, painter, e.getX(), e.getY(), false, false);
                     Point location = e.getPoint();
                     SwingUtilities.convertPointToScreen(location, CanvasAWT.this);
                     tooltip.showTooltip(location.x + 1, location.y + 1, text);

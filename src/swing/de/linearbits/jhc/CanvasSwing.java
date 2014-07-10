@@ -86,7 +86,7 @@ class CanvasSwing extends JComponent implements Canvas<Image, Font, Color> {
             @Override
             public void mouseMoved(java.awt.event.MouseEvent e) {
                 if (heatmap != null && painter != null) {
-                    String text = tooltip.getToolTip(heatmap, painter, e.getX(), e.getY(), true);
+                    String text = tooltip.getToolTip(heatmap, painter, e.getX(), e.getY(), true, false);
                     CanvasSwing.this.setToolTipText(text);
                 } else {
                     CanvasSwing.this.setToolTipText(null);

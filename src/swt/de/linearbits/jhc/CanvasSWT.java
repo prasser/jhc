@@ -131,7 +131,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
             @Override
             public void mouseMove(MouseEvent arg0) {
                 if (heatmap != null && painter != null) {
-                    String text = tooltip.getToolTip(heatmap, painter, arg0.x, arg0.y, false);
+                    String text = tooltip.getToolTip(heatmap, painter, arg0.x, arg0.y, false, true);
                     CanvasSWT.this.setToolTipText(text);
                 } else {
                     CanvasSWT.this.setToolTipText(null);
