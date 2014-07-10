@@ -19,6 +19,7 @@ package de.linearbits.jhc;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 
@@ -98,5 +99,13 @@ public class JHC {
      */
     public void setLayoutData(Object arg0) {
         jhc.setLayoutData(arg0);
+    }
+
+    /**
+     * Returns this instance's display
+     * @return
+     */
+    public Device getDisplay() {
+        return jhc.getDisplay();
     }
 }
