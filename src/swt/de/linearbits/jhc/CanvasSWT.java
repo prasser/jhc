@@ -78,11 +78,10 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         
         this.black = new Color(getDisplay(), 0, 0, 0);
         this.gray = new Color(getDisplay(), 128, 128, 128);
-
         this.textExtents = getTextExtents();
-
         this.setCanvasSize(getSize());
         this.painter = new PainterSWT<Image, Font, Color>(this);
+        
         this.addDisposeListener(new DisposeListener() {
             @Override
             public void widgetDisposed(DisposeEvent arg0) {
