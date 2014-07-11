@@ -25,7 +25,7 @@ package de.linearbits.jhc;
 class ToolTip {
     
     /** Maxmimal width of a line in the tool tip*/
-    private static final int LINE_WIDTH = 200;
+    private static final int LINE_WIDTH = 100;
     /** Maxmimal number of lines*/
     private static final int LINES = 10;
     /** Are we on unix*/
@@ -92,13 +92,13 @@ class ToolTip {
                 StringBuilder b = new StringBuilder();
                 if (html) b.append("<html>");
                 String xlabel = heatmap.getXLabel(dX);
-                b.append("x=").append(swt && isUnix ? xlabel : getTickLabel(xlabel, html));
+                b.append("x=").append(getTickLabel(xlabel, html, swt));
                 
                 if (html) b.append("<br>");
                 else b.append("\n");
                 
                 String ylabel = heatmap.getYLabel(dY);
-                b.append("y=").append(swt && isUnix ? ylabel : getTickLabel(ylabel, html));
+                b.append("y=").append(getTickLabel(ylabel, html, swt));
                 if (html) b.append("</html>");
                 
                 // Store and return
@@ -131,12 +131,24 @@ class ToolTip {
      * @param html
      * @return
      */
-    private String getTickLabel(String label, boolean html) {
+    private String getTickLabel(String label, boolean html, boolean swt) {
         
         if (label == null) return label;
         
         if (label.length()<=LINE_WIDTH) {
             return label;
+        }
+        
+        // On GTK, long tool tips are broken down into several lines automatically
+        if (isUnix && swt) {
+            if (label.length() <= LINE_WIDTH * LINES) {
+                return label;
+            } else {
+                StringBuilder builder = new StringBuilder();
+                builder.append(label.substring(0, LINE_WIDTH * LINES));
+                builder.append("...");
+                return builder.toString();
+            }
         }
         
         StringBuilder builder = new StringBuilder();
