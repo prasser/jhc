@@ -204,6 +204,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         GC gc = new GC(this);
         int width = 2 * gc.textExtent(Graphics.POSTFIX).x;
         int height = gc.textExtent(Graphics.POSTFIX).y;
+        gc.dispose();
         return new Dimension(width, height);
     }
 
