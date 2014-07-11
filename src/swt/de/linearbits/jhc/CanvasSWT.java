@@ -17,7 +17,6 @@
  */
 package de.linearbits.jhc;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.DisposeEvent;
@@ -41,31 +40,31 @@ import org.eclipse.swt.widgets.Composite;
 class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, Font, Color> {
 
     /** The Constant SHOWN_DELAY. */
-    private static final int                  SHOWN_DELAY = 200;
+    private static final int            SHOWN_DELAY = 200;
 
     /** The black. */
-    private Color                             black;
+    private Color                       black       = null;
 
     /** The gray. */
-    private Color                             gray;
+    private Color                       gray        = null;
 
     /** The heatmap. */
-    private RenderedHeatmap<Image>            heatmap     = null;
+    private RenderedHeatmap<Image>      heatmap     = null;
 
     /** The listener. */
-    private CanvasListener                    listener    = null;
+    private CanvasListener              listener    = null;
 
     /** The painter. */
-    private final Painter<Image, Font, Color> painter;
+    private Painter<Image, Font, Color> painter     = null;
 
     /** The size. */
-    private Point                             size        = null;
+    private Point                       size        = null;
 
     /** The text extents. */
-    private Dimension                         textExtents = null;
+    private Dimension                   textExtents = null;
 
     /** The tool tip*/
-    private ToolTip                           tooltip     = new ToolTip();
+    private ToolTip                     tooltip     = new ToolTip();
 
     /**
      * Creates a new instance
@@ -75,8 +74,8 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
      */
     protected CanvasSWT(Composite parent, int style) {
 
-        super(parent, style | SWT.DOUBLE_BUFFERED);
-
+        super(parent, style);
+        
         this.black = new Color(getDisplay(), 0, 0, 0);
         this.gray = new Color(getDisplay(), 128, 128, 128);
 

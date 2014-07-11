@@ -27,18 +27,14 @@ import org.eclipse.swt.widgets.Composite;
  */
 class _JHC extends CanvasSWT {
 
-    /** Resize delay */
-    public static final int           RESIZE_DELAY = 500;
-
     /** The config. */
-    private volatile JHCConfiguration config       = null;
+    private JHCConfiguration config       = null;
 
     /** The data. */
-    private volatile JHCData          data         = null;
+    private JHCData          data         = null;
 
     /** The renderer. */
-    private volatile Renderer<Image>  renderer     = new RendererSWT(this, this);
-
+    private Renderer<Image>  renderer     = new RendererSWT(this, this);
 
     /**
      * Creates a new instance

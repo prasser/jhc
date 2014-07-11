@@ -17,7 +17,6 @@
  */
 package de.linearbits.jhc;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
@@ -49,7 +48,7 @@ public class JHC {
      * @param style the style
      */
     public JHC(Composite parent, int style) {
-        this.jhc = new _JHC(parent, checkStyle(style) | SWT.DOUBLE_BUFFERED);
+        this.jhc = new _JHC(parent, checkStyle(style));
     }
 
     /**
