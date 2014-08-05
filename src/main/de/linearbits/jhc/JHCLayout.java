@@ -218,6 +218,32 @@ public class JHCLayout {
      * @param offsetTop the offset top
      * @param offsetBottom the offset bottom
      * @param offsetCenter the offset center
+     */
+    public JHCLayout(int offsetLeft, int offsetRight, int offsetTop, int offsetBottom, int offsetCenter, int offsetText) {
+        this.leftOffset = offsetLeft;
+        this.rightOffset = offsetRight;
+        this.topOffset = offsetTop;
+        this.bottomOffset = offsetBottom;
+        this.centerOffset = offsetCenter;
+        this.legendWidth = DEFAULT_LEGEND_WIDTH;
+        this.largeTickLength = DEFAULT_LARGE_TICK_LENGTH;
+        this.smallTickLength = DEFAULT_SMALL_TICK_LENGTH;
+        this.textOffset = offsetText;
+        this.xTickRotate = false;
+        this.yTickRotate = false;
+        this.xTickSpace = DEFAULT_TICK_SPACE;
+        this.yTickSpace = DEFAULT_TICK_SPACE;
+        this.check();
+    }
+
+    /**
+     * Instantiates a new layout.
+     * 
+     * @param offsetLeft the offset left
+     * @param offsetRight the offset right
+     * @param offsetTop the offset top
+     * @param offsetBottom the offset bottom
+     * @param offsetCenter the offset center
      * @param xTickRotate the x tick rotate
      * @param xTickSpace the x tick space
      * @param yTickRotate the y tick rotate
