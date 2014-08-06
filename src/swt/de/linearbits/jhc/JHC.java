@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 
 /**
  * This class implements a heatmap widget for SWT
@@ -106,5 +107,13 @@ public class JHC {
      */
     public Device getDisplay() {
         return jhc.getDisplay();
+    }
+
+    /**
+     * Returns the underlying control
+     * @return
+     */
+    public Control getControl() {
+        return jhc;
     }
 }
