@@ -17,6 +17,10 @@
  */
 package de.linearbits.jhc;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
@@ -42,6 +46,9 @@ public class JHC {
     /** The real jhc*/
     private _JHC jhc;
     
+    /** The listeners*/
+    private List<SelectionListener> listeners = new ArrayList<SelectionListener>();
+    
     /**
      * Creates a new instance
      * 
@@ -49,7 +56,16 @@ public class JHC {
      * @param style the style
      */
     public JHC(Composite parent, int style) {
-        this.jhc = new _JHC(parent, checkStyle(style));
+        this.jhc = new _JHC(parent, checkStyle(style), listeners);
+    }
+
+    /**
+     * Adds a selection listener. Selection events will be fired when the rendered heat map
+     * changes.
+     * @param listener
+     */
+    public void addSelectionListener(SelectionListener listener){
+        this.listeners.add(listener);
     }
 
     /**
@@ -61,11 +77,35 @@ public class JHC {
     }
 
     /**
+     * Returns the underlying control
+     * @return
+     */
+    public Control getControl() {
+        return jhc;
+    }
+
+    /**
+     * Returns this instance's display
+     * @return
+     */
+    public Device getDisplay() {
+        return jhc.getDisplay();
+    }
+
+    /**
      * Returns the font
      * @return
      */
     public Font getFont() {
         return jhc.getFont();
+    }
+
+    /**
+     * Removes a selection listener
+     * @param listener
+     */
+    public void removeSelectionListener(SelectionListener listener){
+        this.listeners.remove(listener);
     }
 
     /**
@@ -84,7 +124,7 @@ public class JHC {
     public void setData(JHCData data, JHCConfiguration config) {
         jhc.setData(data, config);
     }
-
+    
     /**
      * Sets the font
      * @param arg0
@@ -92,28 +132,12 @@ public class JHC {
     public void setFont(Font arg0) {
         jhc.setFont(arg0);
     }
-
+    
     /**
      * Sets the layout data
      * @param arg0
      */
     public void setLayoutData(Object arg0) {
         jhc.setLayoutData(arg0);
-    }
-
-    /**
-     * Returns this instance's display
-     * @return
-     */
-    public Device getDisplay() {
-        return jhc.getDisplay();
-    }
-
-    /**
-     * Returns the underlying control
-     * @return
-     */
-    public Control getControl() {
-        return jhc;
     }
 }

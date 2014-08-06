@@ -185,7 +185,10 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
-                if (!CanvasSWT.this.isDisposed()) redraw();
+                if (!CanvasSWT.this.isDisposed()) {
+                    redraw();
+                    ((_JHC)CanvasSWT.this).fireSelectionEvent();
+                }
             }
         });
     }
