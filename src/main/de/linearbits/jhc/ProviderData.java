@@ -74,8 +74,8 @@ class ProviderData extends JHCData {
     /** The min*/
     private double min = Double.MAX_VALUE;
 
-    /** The min*/
-    private double max = Double.MIN_VALUE;
+    /** The max*/
+    private double max = -Double.MAX_VALUE;
     
     /**
      * Instantiates a new data provider.
@@ -110,7 +110,7 @@ class ProviderData extends JHCData {
      * Check if all required values have been computed
      */
     private void ensureMinMaxAvailable() {
-        if (min==Double.MAX_VALUE && max==Double.MIN_VALUE) {
+        if (min==Double.MAX_VALUE && max==-Double.MAX_VALUE) {
            
             switch (orientation){
             case COLUMN:
@@ -173,7 +173,7 @@ class ProviderData extends JHCData {
             counts[y] = new int[width];
         }
         
-        if (min == Double.MAX_VALUE && max == Double.MIN_VALUE) {
+        if (min == Double.MAX_VALUE && max == -Double.MAX_VALUE) {
             
             switch (orientation){
             case COLUMN:
