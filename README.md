@@ -103,3 +103,7 @@ Online Javadoc for AWT can be found [here](https://rawgithub.com/prasser/jhc/mas
 Online Javadoc for Swing can be found [here](https://rawgithub.com/prasser/jhc/master/doc/swing/index.html).
 
 Online Javadoc for SWT can be found [here](https://rawgithub.com/prasser/jhc/master/doc/swt/index.html). 
+
+License
+------
+EPL 1.0
