@@ -15,7 +15,7 @@ import org.eclipse.swt.graphics.Image;
 
 /**
  * This class implements a painter for SWT. The only difference to the standard painter is that
- * the legend is disposed proberly
+ * the legend is disposed properly
  * 
  * @author Fabian Prasser
  *
