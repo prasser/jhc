@@ -79,6 +79,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         this.addDisposeListener(new DisposeListener() {
             @Override
             public void widgetDisposed(DisposeEvent arg0) {
+                disposeHeatmap();
                 painter.dispose();
                 black.dispose();
                 gray.dispose();
@@ -153,6 +154,12 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
     }
 
     @Override
+    public void setBackground(Color bg) {
+        super.setBackground(bg);
+        if (listener != null) listener.resized();
+    }
+
+    @Override
     public void setFont(Font arg0) {
         super.setFont(arg0);
         textExtents = getTextExtents();
@@ -165,17 +172,15 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         if (listener != null) listener.resized();
     }
 
-    @Override
-    public void setBackground(Color bg) {
-        super.setBackground(bg);
-        if (listener != null) listener.resized();
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void setHeatmap(RenderedHeatmap<?> heatmap) {
+        this.disposeHeatmap();
         this.heatmap = (RenderedHeatmap<Image>)heatmap;
-        if (this.isDisposed()) return;
+        if (this.isDisposed()) {
+            this.disposeHeatmap();
+            return;
+        }
         getDisplay().asyncExec(new Runnable() {
             @Override
             public void run() {
@@ -193,6 +198,15 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
     }
 
     /**
+     * Dispose the current heatmap
+     */
+    private void disposeHeatmap() {
+        if (heatmap != null && heatmap.getImage() != null && !heatmap.getImage().isDisposed()) {
+            heatmap.getImage().dispose();
+        }
+    }
+
+    /**
      * Gets the text extents.
      * 
      * @return the text extents
@@ -204,7 +218,7 @@ class CanvasSWT extends org.eclipse.swt.widgets.Canvas implements Canvas<Image, 
         gc.dispose();
         return new Dimension(width, height);
     }
-
+    
     /**
      * Sets the canvas size.
      * 
