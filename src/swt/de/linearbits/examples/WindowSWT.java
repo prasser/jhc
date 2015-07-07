@@ -52,7 +52,7 @@ class WindowSWT implements Window<Font, Color> {
         gridLayout.numColumns = 1;
         shell.setLayout(gridLayout);
 
-        jhc = new JHC(shell, SWT.NONE);
+        jhc = new JHC(shell, SWT.DOUBLE_BUFFERED);
         GridData gridData = new GridData();
         gridData.grabExcessVerticalSpace = true;
         gridData.grabExcessHorizontalSpace = true;

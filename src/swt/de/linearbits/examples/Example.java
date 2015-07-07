@@ -52,7 +52,7 @@ public class Example {
         JHCData data = JHCData.create(array, Orientation.ROW, xScale, yScale);
 
         // Create JHC widget
-        JHC jhc = new JHC(shell, SWT.NONE);
+        JHC jhc = new JHC(shell, SWT.DOUBLE_BUFFERED);
         jhc.setData(data, config);
         
         // Enter event loop
